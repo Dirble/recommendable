@@ -19,7 +19,8 @@ module Recommendable
     def query(klass, ids)
         Recommendable::Helpers::Queriers.send(Recommendable.config.orm, klass, ids)
       rescue NoMethodError
-        warn 'Your ORM, #{Recommendable.config.orm} is not currently supported. Please open an issue at https://github.com/davidcelis/recommendable'
+        warn Recommendable.config.orm
+        warn 'Your ORM is not currently supported. Please open an issue at https://github.com/davidcelis/recommendable'
     end
 
     def enqueue(user_id)
